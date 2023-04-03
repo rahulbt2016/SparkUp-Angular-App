@@ -1,0 +1,83 @@
+<link
+  href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined"
+  rel="stylesheet"
+/>
+
+<div class="border rounded-lg p-4">
+  <div class="flex justify-between gap-6">
+    <div>
+      <img
+        src="assets/p3.jpeg"
+        class="w-20 h-16 rounded-full object-cover"
+        alt="User Image"
+      />
+    </div>
+    <div class="w-full">
+      <input
+        class="w-full bg-neutral-light rounded-full p-4"
+        type="text"
+        placeholder="What's on your mind..."
+        (ngModelChange)="setPost($event)"
+      />
+    </div>
+  </div>
+  <div class="mt-4 border rounded-md border-medium p-4">
+    <ngx-dropzone [multiple]="false" (change)="setImage($event.addedFiles[0])">
+      <div class="flex justify-between">
+        <div
+          ngxDropzonePreview
+          class="w-full cursor-pointer border-dashed border-primary-main rounded-md p-4"
+        >
+          <ng-container>
+            <p>Add Image Here</p>
+          </ng-container>
+          <ng-container>
+            <div class="flex justify-between">
+              <p>p2.jpeg</p>
+              <i class="material-icons-outlined text-primary-main text-xl"
+                >delete_outline</i
+              >
+            </div>
+          </ng-container>
+          <input
+            ngxDropzoneInput
+            type="file"
+            [style.display]="'none'"
+            [accept]="'.jpg,.jpeg,.png'"
+          />
+        </div>
+      </div>
+    </ngx-dropzone>
+  </div>
+  <hr class="my-5" />
+  <div class="flex justify-between items-center">
+    <div class="flex justify-between gap-2 cursor-pointer">
+      <i class="material-icons-outlined text-primary-main text-xl">image</i>
+      <span class="text-medium-main hover:text-medium cursor-pointer"
+        >Image</span
+      >
+    </div>
+    <div class="flex justify-between gap-2">
+      <div class="flex justify-between gap-2">
+        <i class="material-icons-outlined text-primary-main text-xl">gif_box</i>
+        <span class="text-medium-main">Clip</span>
+      </div>
+      <div class="flex justify-between gap-2">
+        <i class="material-icons-outlined text-primary-main text-xl"
+          >attach_file</i
+        >
+        <span class="text-medium-main">Attachment</span>
+      </div>
+      <div class="flex justify-between gap-2">
+        <i class="material-icons-outlined text-primary-main text-xl">mic</i>
+        <span class="text-medium-main">Audio</span>
+      </div>
+    </div>
+    <button
+      class="px-6 py-2 rounded-full bg-primary-main text-background-alt"
+      (click)="handlePost()"
+    >
+      POST
+    </button>
+  </div>
+</div>
