@@ -6,8 +6,8 @@ import { LoginPageComponent } from './scenes/login-page/login-page.component';
 import { RegisterPageComponent } from './scenes/register-page/register-page.component';
 
 const routes: Routes = [
-  { path: '', component: HomePageComponent },
-  { path: 'login', component: LoginPageComponent },
+  { path: '', component: LoginPageComponent },
+  { path: 'home', component: HomePageComponent },
   { path: 'register', component: RegisterPageComponent },
   { path: 'profile', component: HomePageComponent },
   { path: 'chat', component: ChatComponent },

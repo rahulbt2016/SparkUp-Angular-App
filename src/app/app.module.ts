@@ -13,6 +13,7 @@ import { ProfilePageComponent } from './scenes/profile-page/profile-page.compone
 import { RegisterPageComponent } from './scenes/register-page/register-page.component';
 import { UserWidgetComponent } from './scenes/widgets/user-widget/user-widget.component';
 import { NewPostWidgetComponent } from './scenes/widgets/new-post-widget/new-post-widget.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { NewPostWidgetComponent } from './scenes/widgets/new-post-widget/new-pos
     FormsModule,
     ReactiveFormsModule,
     NgxDropzoneModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
