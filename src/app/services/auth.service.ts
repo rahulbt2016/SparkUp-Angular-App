@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
+import { BASE_URL } from '../api/config';
 
 export interface IAuth {
   token: string;
@@ -30,7 +31,7 @@ export class AuthService {
   private _isLoggedIn$ = new BehaviorSubject<boolean>(false);
   isLoggedIn$ = this._isLoggedIn$.asObservable();
 
-  private url: string = 'http://localhost:3001/auth/login';
+  private url: string = BASE_URL + '/auth/login';
 
   constructor(private http: HttpClient) {
     const mytoken = localStorage.getItem('authToken');
@@ -70,14 +71,21 @@ export class AuthService {
 
   getPostFeeds() {
     return this.http.get<IPost[]>(
-      'http://localhost:3001/posts',
+      BASE_URL + '/posts',
       this.httpOptions
     );
   }
 
   getUserPosts() {
     return this.http.get<IPost[]>(
-      'http://localhost:3001/posts/' + this.userId,
+      BASE_URL + '/posts/' + this.userId,
+      this.httpOptions
+    );
+  }
+
+  getUser(userId: string|null) {
+    return this.http.get<IPost[]>(
+      BASE_URL + '/users/' + userId,
       this.httpOptions
     );
   }

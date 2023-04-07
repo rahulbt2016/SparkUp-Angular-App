@@ -1,23 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
+import { BASE_URL } from 'src/app/api/config';
 
 @Component({
   selector: 'app-user-widget',
   templateUrl: './user-widget.component.html',
   styleUrls: ['./user-widget.component.css'],
 })
-export class UserWidgetComponent {
-  viewProfile: any = {};
+export class UserWidgetComponent implements OnInit {
+  BASE_URL = BASE_URL;
+  user: any;
+  constructor(private authService: AuthService) {}
+  
+  ngOnInit(): void {
+    let userId = localStorage.getItem('userId');
+    this.authService.getUser(userId).subscribe((data) => {
+      this.user = data;
+    });
+  }
 
-  user = {
-    firstName: 'John',
-    lastName: 'Doe',
-    profilePicture: 'https://dummyimage.com/200x200/000/fff',
-    coverPhoto: 'https://dummyimage.com/600x200/000/fff',
-    bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    friends: ['Jane', 'Bob', 'Alice'],
-    location: 'New York, NY',
-    occupation: 'Software Engineer',
-    viewedProfile: 2304,
-    impressions: 5405,
-  };
+  viewProfile: any = {};
 }

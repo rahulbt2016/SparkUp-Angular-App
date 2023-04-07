@@ -14,6 +14,8 @@ import { RegisterPageComponent } from './scenes/register-page/register-page.comp
 import { UserWidgetComponent } from './scenes/widgets/user-widget/user-widget.component';
 import { NewPostWidgetComponent } from './scenes/widgets/new-post-widget/new-post-widget.component';
 import { HttpClientModule } from '@angular/common/http';
+import { PostsWidgetComponent } from './scenes/widgets/posts-widget/posts-widget.component';
+import { PostWidgetComponent } from './scenes/widgets/post-widget/post-widget.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { HttpClientModule } from '@angular/common/http';
     RegisterPageComponent,
     UserWidgetComponent,
     NewPostWidgetComponent,
+    PostsWidgetComponent,
+    PostWidgetComponent,
   ],
   imports: [
     BrowserModule,
