@@ -38,4 +38,3 @@ export class FriendlistWidgetComponent implements OnInit {
   }
 
 }
-
