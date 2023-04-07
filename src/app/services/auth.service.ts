@@ -34,6 +34,7 @@ export class AuthService {
 
   constructor(private http: HttpClient) {
     const mytoken = localStorage.getItem('authToken');
+    const userId = localStorage.getItem('userId');
     this._isLoggedIn$.next(!!mytoken);
   }
 
@@ -47,6 +48,7 @@ export class AuthService {
         tap((response: any) => {
           this._isLoggedIn$.next(true);
           localStorage.setItem('authToken', response.token);
+          localStorage.setItem('userId', response.user._id);
         })
       );
   }
@@ -54,9 +56,11 @@ export class AuthService {
   logout() {
     this._isLoggedIn$.next(false);
     localStorage.removeItem('authToken');
+    localStorage.removeItem('userId');
   }
 
   mytoken = localStorage.getItem('authToken');
+  userId = localStorage.getItem('userId');
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -65,8 +69,15 @@ export class AuthService {
   };
 
   getPostFeeds() {
-    return this.http.get<IPost>(
+    return this.http.get<IPost[]>(
       'http://localhost:3001/posts',
+      this.httpOptions
+    );
+  }
+
+  getUserPosts() {
+    return this.http.get<IPost[]>(
+      'http://localhost:3001/posts/' + this.userId,
       this.httpOptions
     );
   }

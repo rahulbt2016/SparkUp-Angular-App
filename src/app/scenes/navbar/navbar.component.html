@@ -1,21 +1,20 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet"/>
+
 <nav class="bg-[#00D5FA]">
-    <ul class="flex justify-between px-4 py-3">
-      <li>
-        <a routerLink="/" class="text-white font-bold">Login</a>
-      </li>
-      <li>
-        <a routerLink="/home" class="text-white hover:text-gray-300">Home</a>
-      </li>
-      <li>
-        <a routerLink="/register" class="text-white hover:text-gray-300">Register</a>
-      </li>
-      <li>
-        <a routerLink="/profile" class="text-white hover:text-gray-300">Profile</a>
-      </li>
-      <li>
-        <a routerLink="/chat" class="text-white hover:text-gray-300">Chat</a>
-      </li>
-    </ul>
+  <div class="flex justify-between items-center px-4 py-3">
+    <div>
+      <a routerLink="/" class="text-white font-bold text-2xl">SparkUp</a>
+    </div>
+    <div class="flex items-center">
+      <a routerLink="/profile" class="text-white hover:text-gray-300 mx-5">
+        <i class="material-icons-outlined text-primary-main text-xl">person</i>
+      </a>
+      <a routerLink="/chat" class="text-white hover:text-gray-300 ml-4 mx-5">
+        <i class="material-icons-outlined text-primary-main text-xl">chat</i>
+      </a>
+      <a routerLink="/" (click)="logout()" class="text-white hover:text-gray-300 ml-4 mx-5">
+        <i class="material-icons-outlined text-primary-main text-xl">logout</i>
+      </a>
+    </div>
+  </div>
 </nav>
-  
-  
