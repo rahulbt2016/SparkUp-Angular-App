@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+
+<div class="flex flex-col border border-gray-300 shadow rounded-lg p-4 space-y-4">
+    <h5 class="text-gray-800 font-medium mb-4">Friend List</h5>
+    <div class="flex flex-col gap-6">
+      <div *ngFor="let friend of friendList" class="flex justify-between items-center">
+        <div class="flex items-center space-x-1">
+            <img src="{{BASE_URL + '/assets/' + friend.picturePath}}" alt="User Image" class="w-14 h-14 rounded-full">
+            <div (click)="navigateToProfile(friend._id)" class="cursor-pointer">
+              <h5 class="text-main font-semibold hover:text-primary-light">{{ friend.firstName }} {{ friend.lastName }}</h5>
+              <p class="text-medium text-xs">{{ friend.occupation }}</p>
+            </div>
+          </div>
+
+          
+          <button class="bg-[#E6FBFF] p-2 rounded-full hover:bg-slate-100 hover:text-[#00D5FA]" (click)="patchFriend(friend._id)">
+            <span class="text-primary-dark">
+              <i class="material-icons text-[#006B7D]">
+                person_remove_alt_1
+              </i>
+            </span>
+          </button>
+          
+      </div>
+    </div>
+  </div>
+  

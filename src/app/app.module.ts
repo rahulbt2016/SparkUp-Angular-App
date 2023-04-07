@@ -16,6 +16,8 @@ import { NewPostWidgetComponent } from './scenes/widgets/new-post-widget/new-pos
 import { HttpClientModule } from '@angular/common/http';
 import { PostsWidgetComponent } from './scenes/widgets/posts-widget/posts-widget.component';
 import { PostWidgetComponent } from './scenes/widgets/post-widget/post-widget.component';
+import { AdvertWidgetComponent } from './scenes/widgets/advert-widget/advert-widget.component';
+import { FriendlistWidgetComponent } from './scenes/widgets/friendlist-widget/friendlist-widget.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { PostWidgetComponent } from './scenes/widgets/post-widget/post-widget.co
     NewPostWidgetComponent,
     PostsWidgetComponent,
     PostWidgetComponent,
+    AdvertWidgetComponent,
+    FriendlistWidgetComponent,
   ],
   imports: [
     BrowserModule,

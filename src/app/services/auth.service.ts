@@ -23,6 +23,15 @@ interface IPost {
   updatedAt: string;
 }
 
+interface IFriend {
+
+  _id: string;
+  firstName: string;
+  lastName: string;
+  occupation: string;
+  picturePath: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -86,6 +95,13 @@ export class AuthService {
   getUser(userId: string|null) {
     return this.http.get<IPost[]>(
       BASE_URL + '/users/' + userId,
+      this.httpOptions
+    );
+  }
+
+  getFriendList(userId: string|null) {
+    return this.http.get<IFriend[]>(
+      BASE_URL + '/users/' + userId + '/friends/',
       this.httpOptions
     );
   }
