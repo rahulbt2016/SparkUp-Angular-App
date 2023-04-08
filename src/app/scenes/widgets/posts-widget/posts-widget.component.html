@@ -1,4 +1,5 @@
 <div *ngFor='let post of postFeeds'>
-  <div class="post">
+  <div *ngIf="post.userId.includes(this.userId) || this.userId===''">
     <app-post-widget [post]="post"></app-post-widget>
   </div>
+</div>

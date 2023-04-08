@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: '', component: LoginPageComponent, canActivate: [AuthReverseGuard] },
   { path: 'home', component: HomePageComponent, canActivate: [AuthGuard] },
   { path: 'register', component: RegisterPageComponent, canActivate: [AuthReverseGuard] },
-  { path: 'profile', component: ProfilePageComponent, canActivate: [AuthGuard] },
+  { path: 'profile/:userId', component: ProfilePageComponent, canActivate: [AuthGuard] },
   { path: 'chat', component: ChatComponent, canActivate: [AuthGuard] },
 ];
 

@@ -8,4 +8,5 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 
 export class HomePageComponent {
+  userId = localStorage.getItem('userId');
 }

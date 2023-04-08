@@ -1,13 +1,16 @@
 <app-navbar></app-navbar>
-<div class="flex justify-between ml-4 mt-4">
-  <div class="w-1/4 m-5 ml-20">
-    <app-user-widget></app-user-widget>
+<div class="flex justify-between ml-4 mt-10">
+  <div class="w-3/12">
   </div>
-  <div class="w-2/4 px-5 m-5">
+  <div class="w-3/12 mx-5">
+    <app-user-widget [userId]="userId?? ''"></app-user-widget>
+    <br>
+    <app-friendlist-widget [userId]="userId?? ''"></app-friendlist-widget>
+  </div>
+  <div class="w-4/12 px-5 mx-5">
     <app-new-post-widget></app-new-post-widget>
-    <app-posts-widget></app-posts-widget>
+    <app-posts-widget [userId]="userId?? ''"></app-posts-widget>
   </div>
-  <div class="w-1/4 m-5 mr-20">
-    <!-- <app-another-widget></app-another-widget> -->
+  <div class="w-2/12 mr-20">
   </div>
 </div>

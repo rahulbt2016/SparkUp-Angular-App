@@ -6,7 +6,7 @@
         <div class="flex items-center justify-between space-x-3">
             <img class="w-16 h-16 rounded-full object-cover" src="{{BASE_URL}}/assets/{{post.userPicturePath}}" alt="user">
             <div>
-            <p class="font-bold">{{ post.firstName }} {{ post.lastName }}</p>
+            <a routerLink="/profile/{{post.userId}}" class="font-bold hover:text-[#00D5FA]">{{ post.firstName }} {{ post.lastName }}</a>
             <p class="text-gray-500">{{ post.location }}</p>
             </div>
         </div>

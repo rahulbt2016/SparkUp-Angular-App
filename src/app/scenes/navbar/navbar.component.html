@@ -6,13 +6,16 @@
       <a routerLink="/" class="text-white font-bold text-2xl">SparkUp</a>
     </div>
     <div class="flex items-center">
-      <a routerLink="/profile" class="text-white hover:text-gray-300 mx-5">
+      <a routerLink="/home" class="text-white hover:text-gray-300 mx-5">
+        <i class="material-icons-outlined text-primary-main text-xl">home</i>
+      </a>
+      <a routerLink="/profile/{{userId}}" class="text-white hover:text-gray-300 mx-5">
         <i class="material-icons-outlined text-primary-main text-xl">person</i>
       </a>
-      <a routerLink="/chat" class="text-white hover:text-gray-300 ml-4 mx-5">
+      <a routerLink="/chat" class="text-white hover:text-gray-300 mx-5">
         <i class="material-icons-outlined text-primary-main text-xl">chat</i>
       </a>
-      <a routerLink="/" (click)="logout()" class="text-white hover:text-gray-300 ml-4 mx-5">
+      <a routerLink="/" (click)="logout()" class="text-white hover:text-gray-300 mx-5">
         <i class="material-icons-outlined text-primary-main text-xl">logout</i>
       </a>
     </div>

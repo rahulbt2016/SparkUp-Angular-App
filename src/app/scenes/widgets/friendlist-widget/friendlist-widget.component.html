@@ -8,7 +8,7 @@
         <div class="flex items-center space-x-1">
             <img src="{{BASE_URL + '/assets/' + friend.picturePath}}" alt="User Image" class="w-14 h-14 rounded-full">
             <div (click)="navigateToProfile(friend._id)" class="cursor-pointer">
-              <h5 class="text-main font-semibold hover:text-primary-light">{{ friend.firstName }} {{ friend.lastName }}</h5>
+              <h5 class="text-main font-semibold hover:text-[#00D5FA]">{{ friend.firstName }} {{ friend.lastName }}</h5>
               <p class="text-medium text-xs">{{ friend.occupation }}</p>
             </div>
           </div>

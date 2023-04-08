@@ -16,11 +16,12 @@
         alt="user"
       />
       <div>
-        <h4
-          class="text-lg font-semibold text-gray-700 hover:text-primary-light"
+        <a
+          routerLink="/profile/{{user._id}}"
+          class="text-lg font-semibold text-gray-700 hover:text-[#00D5FA]"
         >
           {{ user.firstName }} {{ user.lastName }}
-        </h4>
+      </a>
         <p class="text-gray-500">{{ user.friends.length }} friends</p>
       </div>
     </div>

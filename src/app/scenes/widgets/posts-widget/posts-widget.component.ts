@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 
 interface IPost {
@@ -25,6 +25,8 @@ interface IPost {
 
 export class PostsWidgetComponent implements OnInit{
   constructor(private authService: AuthService) {}
+
+  @Input() userId: string = '';
   
   postFeeds: IPost[] = [];
 

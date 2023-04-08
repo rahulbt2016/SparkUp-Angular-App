@@ -85,9 +85,9 @@ export class AuthService {
     );
   }
 
-  getUserPosts() {
+  getUserPosts(userId: string|null) {
     return this.http.get<IPost[]>(
-      BASE_URL + '/posts/' + this.userId,
+      BASE_URL + '/posts/' + userId,
       this.httpOptions
     );
   }

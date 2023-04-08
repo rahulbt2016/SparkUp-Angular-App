@@ -10,6 +10,8 @@ export class NavbarComponent {
 
   constructor(private authService: AuthService) {}
 
+  userId = localStorage.getItem('userId');
+
   logout() {
     this.authService.logout();
   }
