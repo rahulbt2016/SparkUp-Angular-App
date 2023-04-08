@@ -8,6 +8,23 @@ export interface IAuth {
   token: string;
 }
 
+interface IUser {
+  _id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  picturePath: string;
+  friends: string[];
+  location: string;
+  occupation: string;
+  viewedProfile: number;
+  impressions: number;
+  messages: any[];
+  createdAt: string;
+  updatedAt: string;
+}
+
 interface IPost {
   _id: string;
   userId: string;
@@ -93,7 +110,7 @@ export class AuthService {
   }
 
   getUser(userId: string|null) {
-    return this.http.get<IPost[]>(
+    return this.http.get<IUser>(
       BASE_URL + '/users/' + userId,
       this.httpOptions
     );
