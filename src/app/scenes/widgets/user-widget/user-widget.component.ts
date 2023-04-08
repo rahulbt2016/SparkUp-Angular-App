@@ -24,7 +24,7 @@ interface IUser {
   templateUrl: './user-widget.component.html',
   styleUrls: ['./user-widget.component.css'],
 })
-export class UserWidgetComponent implements OnInit {
+export class UserWidgetComponent implements OnInit, OnChanges {
   BASE_URL = BASE_URL;
   user: IUser = {
     _id: '',
@@ -52,7 +52,13 @@ export class UserWidgetComponent implements OnInit {
     });
   }
 
-  
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['userId']) {
+      this.authService.getUser(changes['userId'].currentValue).subscribe((data) => {
+        this.user = data;
+      });
+    }
+  }
 
   viewProfile: any = {};
 }
