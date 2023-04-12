@@ -1,23 +1,48 @@
 <h1 class="text-2xl font-bold mb-4 text-center mt-10">Login Form</h1>
-<form (ngSubmit)="onLogin(myform)" #myform="ngForm" class="flex flex-col space-y-4 m-10">
-    <div *ngIf="showError==true" class="text-red-600">User not found!</div>
-    <input type="email" 
-        name="email" 
-        ngModel required email 
-        #email="ngModel" 
-        placeholder="Email"
-        class="px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#00D5FA]"
-        [ngClass]="{'border-red-500': email.invalid && email.touched}"    
-    />
-    <div *ngIf="email.invalid && email.touched" class="text-red-600">Please enter a valid email address</div>
-    <input type="password" 
-            name="password" 
-            ngModel required minlength="8" 
-            #password="ngModel" 
-            placeholder="Password"
-            class="px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#00D5FA]"
-            [ngClass]="{'border-red-500': password.invalid && password.touched}"
-    /> 
-    <div *ngIf="password.invalid && password.touched" class="text-red-600">Please enter a valid password (Minimum 8 characters)</div>
-    <input type="submit" [disabled]="myform.invalid" value="LOGIN" class="px-4 py-2 bg-[#00D5FA] text-white rounded-md hover:bg-slate-50 hover:text-[#00D5FA] focus:outline-none focus:ring-2 focus:ring-blue-400 disabled:bg-slate-50 disabled:text-gray-300"/>
+<form
+  (ngSubmit)="onLogin(myform)"
+  #myform="ngForm"
+  class="flex flex-col space-y-4 m-10"
+>
+  <div *ngIf="showError == true" class="text-red-600">User not found!</div>
+  <input
+    type="email"
+    name="email"
+    ngModel
+    required
+    email
+    #email="ngModel"
+    placeholder="Email"
+    class="px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#00D5FA]"
+    [ngClass]="{ 'border-red-500': email.invalid && email.touched }"
+  />
+  <div *ngIf="email.invalid && email.touched" class="text-red-600">
+    Please enter a valid email address
+  </div>
+  <input
+    type="password"
+    name="password"
+    ngModel
+    required
+    minlength="8"
+    #password="ngModel"
+    placeholder="Password"
+    class="px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#00D5FA]"
+    [ngClass]="{ 'border-red-500': password.invalid && password.touched }"
+  />
+  <div *ngIf="password.invalid && password.touched" class="text-red-600">
+    Please enter a valid password (Minimum 8 characters)
+  </div>
+  <input
+    type="submit"
+    [disabled]="myform.invalid"
+    value="LOGIN"
+    class="px-4 py-2 bg-[#00D5FA] text-white rounded-md hover:bg-slate-50 hover:text-[#00D5FA] focus:outline-none focus:ring-2 focus:ring-blue-400 disabled:bg-slate-50 disabled:text-gray-300"
+  />
+  <button
+    routerLink="/register"
+    class="px-4 py-2 bg-white text-[#00D5FA] rounded-md hover:bg-[#00D5FA] hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-400"
+  >
+    REGISTER
+  </button>
 </form>

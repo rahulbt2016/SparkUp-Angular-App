@@ -1,70 +1,82 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+/>
 
 <div class="my-8 border border-gray-300 shadow rounded-lg p-4 space-y-4">
-    
+  <div class="flex items-center justify-between space-x-3">
     <div class="flex items-center justify-between space-x-3">
-        <div class="flex items-center justify-between space-x-3">
-            <img class="w-16 h-16 rounded-full object-cover" src="{{BASE_URL}}/assets/{{post.userPicturePath}}" alt="user">
-            <div>
-            <a routerLink="/profile/{{post.userId}}" class="font-bold hover:text-[#00D5FA]">{{ post.firstName }} {{ post.lastName }}</a>
-            <p class="text-gray-500">{{ post.location }}</p>
-            </div>
-        </div>
-        <div class="ml-auto">
-          <button class="p-2 rounded-full bg-[#E6FBFF] text-[#006B7D] hover:bg-slate-100 hover:text-[#00D5FA]">
-            <ng-container *ngIf="isFriend; else notFriend">
-              <i class="fas fa-user-minus"></i>
-            </ng-container>
-            <ng-template #notFriend>
-              <i class="fas fa-user-plus"></i>
-            </ng-template>
-          </button>
-        </div>
-      </div>
-            
-      
-      
-    <p class="text-red mt-4">{{post.description}}</p>
-    <ng-container *ngIf="post.picturePath">
       <img
-        class="w-full h-auto rounded-lg mt-3"
-        alt="post"
-        [src]="BASE_URL + '/assets/' + post.picturePath"
+        class="w-16 h-16 rounded-full object-cover"
+        src="{{ BASE_URL }}/assets/{{ post.userPicturePath }}"
+        alt="user"
       />
-      
-    </ng-container>
-    <div class="flex justify-between items-center mt-1">
-      <div class="flex gap-4">
-        <div class="flex gap-2">
-          <button (click)="patchLike()" class="hover:text-[#00D5FA]">
-            <ng-container *ngIf="isLiked; else notLiked">
-              <i class="fa fa-heart text-[#00D5FA]"></i>
-            </ng-container>
-            <ng-template #notLiked>
-              <i class="far fa-heart"></i>
-            </ng-template>
-            <p>{{likeCount}}</p>
-          </button>
-        </div>
-        <div class="flex gap-2">
-          <button (click)="setIsComments(!isComments)">
-            <i class="far fa-comment-dots"></i>
-            <p>{{post.comments.length}}</p>
-          </button>
-        </div>
+      <div>
+        <a
+          routerLink="/profile/{{ post.userId }}"
+          class="font-bold hover:text-[#00D5FA]"
+          >{{ post.firstName }} {{ post.lastName }}</a
+        >
+        <p class="text-gray-500">{{ post.location }}</p>
       </div>
-      <div class="flex items-center gap-2">
-        <button>
-          <i class="fas fa-share-alt"></i>
+    </div>
+    <div class="ml-auto">
+      <button
+        (click)="addFriend()"
+        class="p-2 rounded-full bg-[#E6FBFF] text-[#006B7D] hover:bg-slate-100 hover:text-[#00D5FA]"
+      >
+        <ng-container *ngIf="isFriend; else notFriend">
+          <i class="fas fa-user-minus"></i>
+        </ng-container>
+        <ng-template #notFriend>
+          <i class="fas fa-user-plus"></i>
+        </ng-template>
+      </button>
+    </div>
+  </div>
+
+  <p class="text-red mt-4">{{ post.description }}</p>
+  <ng-container *ngIf="post.picturePath">
+    <img
+      class="w-full h-auto rounded-lg mt-3"
+      alt="post"
+      [src]="BASE_URL + '/assets/' + post.picturePath"
+    />
+  </ng-container>
+  <div class="flex justify-between items-center mt-1">
+    <div class="flex gap-4">
+      <div class="flex gap-2">
+        <button (click)="patchLike()" class="hover:text-[#00D5FA]">
+          <ng-container *ngIf="isLiked; else notLiked">
+            <i class="fa fa-heart text-[#00D5FA]"></i>
+          </ng-container>
+          <ng-template #notLiked>
+            <i class="far fa-heart"></i>
+          </ng-template>
+          <p>{{ likeCount }}</p>
+        </button>
+      </div>
+      <div class="flex gap-2">
+        <button (click)="setIsComments(!isComments)">
+          <i class="far fa-comment-dots"></i>
+          <p>{{ post.comments.length }}</p>
         </button>
       </div>
     </div>
-    <ng-container *ngIf="isComments">
-      <div class="mt-2">
-        <div *ngFor="let comment of post.comments" class="border-t-2 border-gray-300 my-2 pl-4">
-          <p class="text-red">{{comment}}</p>
-        </div>
-      </div>
-    </ng-container>
+    <div class="flex items-center gap-2">
+      <button>
+        <i class="fas fa-share-alt"></i>
+      </button>
+    </div>
   </div>
-  
+  <ng-container *ngIf="isComments">
+    <div class="mt-2">
+      <div
+        *ngFor="let comment of post.comments"
+        class="border-t-2 border-gray-300 my-2 pl-4"
+      >
+        <p class="text-red">{{ comment }}</p>
+      </div>
+    </div>
+  </ng-container>
+</div>

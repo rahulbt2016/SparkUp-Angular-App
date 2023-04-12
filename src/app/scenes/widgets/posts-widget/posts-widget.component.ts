@@ -16,23 +16,21 @@ interface IPost {
   updatedAt: string;
 }
 
-
 @Component({
   selector: 'app-posts-widget',
   templateUrl: './posts-widget.component.html',
-  styleUrls: ['./posts-widget.component.css']
+  styleUrls: ['./posts-widget.component.css'],
 })
-
-export class PostsWidgetComponent implements OnInit{
+export class PostsWidgetComponent implements OnInit {
   constructor(private authService: AuthService) {}
 
   @Input() userId: string = '';
-  
+
   postFeeds: IPost[] = [];
 
   ngOnInit(): void {
     this.authService.getPostFeeds().subscribe((data) => {
-      this.postFeeds = data;
+      this.postFeeds = data.reverse();
     });
   }
 }

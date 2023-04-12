@@ -7,8 +7,8 @@
   <div class="flex justify-between gap-6">
     <div>
       <img
-        src="assets/p3.jpeg"
-        class="w-20 h-16 rounded-full object-cover"
+        src="{{ BASE_URL }}/assets/{{ user.picturePath }}"
+        class="w-20 h-17 rounded-full object-cover"
         alt="User Image"
       />
     </div>
@@ -17,11 +17,12 @@
         class="w-full bg-neutral-light rounded-full p-4"
         type="text"
         placeholder="What's on your mind..."
-        (ngModelChange)="setPost($event)"
+        [(ngModel)]="description"
+        name="description"
       />
     </div>
   </div>
-  <div class="mt-4 border rounded-md border-medium p-4">
+  <div *ngIf="showDropbox" class="mt-4 border rounded-md border-medium p-4">
     <ngx-dropzone [multiple]="false" (change)="setImage($event.addedFiles[0])">
       <div class="flex justify-between">
         <div
@@ -29,12 +30,16 @@
           class="w-full cursor-pointer border-dashed border-primary-main rounded-md p-4"
         >
           <ng-container>
-            <p>Add Image Here</p>
+            <div *ngIf="!file" class="flex justify-between">
+              <p>Add Image Here</p>
+            </div>
           </ng-container>
           <ng-container>
-            <div class="flex justify-between">
-              <p>p2.jpeg</p>
-              <i class="material-icons-outlined text-primary-main text-xl"
+            <div *ngIf="file" class="flex justify-between">
+              <p>{{ file.name }}</p>
+              <i
+                class="material-icons-outlined text-primary-main text-xl"
+                (click)="resetFileInput()"
                 >delete_outline</i
               >
             </div>
@@ -51,30 +56,33 @@
   </div>
   <hr class="my-5" />
   <div class="flex justify-between items-center">
-    <div class="flex justify-between gap-2 cursor-pointer">
+    <div
+      class="flex justify-between gap-2 cursor-pointer"
+      (click)="showDropbox = !showDropbox"
+    >
       <i class="material-icons-outlined text-primary-main text-xl">image</i>
       <span class="text-medium-main hover:text-medium cursor-pointer"
         >Image</span
       >
     </div>
+
     <div class="flex justify-between gap-2">
-      <div class="flex justify-between gap-2">
-        <i class="material-icons-outlined text-primary-main text-xl">gif_box</i>
-        <span class="text-medium-main">Clip</span>
-      </div>
-      <div class="flex justify-between gap-2">
-        <i class="material-icons-outlined text-primary-main text-xl"
-          >attach_file</i
-        >
-        <span class="text-medium-main">Attachment</span>
-      </div>
-      <div class="flex justify-between gap-2">
-        <i class="material-icons-outlined text-primary-main text-xl">mic</i>
-        <span class="text-medium-main">Audio</span>
-      </div>
+      <i class="material-icons-outlined text-primary-main text-xl">gif_box</i>
+      <span class="text-medium-main">Clip</span>
     </div>
+    <div class="flex justify-between gap-2">
+      <i class="material-icons-outlined text-primary-main text-xl"
+        >attach_file</i
+      >
+      <span class="text-medium-main">Attachment</span>
+    </div>
+    <div class="flex justify-between gap-2">
+      <i class="material-icons-outlined text-primary-main text-xl">mic</i>
+      <span class="text-medium-main">Audio</span>
+    </div>
+
     <button
-      class="px-6 py-2 rounded-full bg-primary-main text-background-alt"
+      class="px-6 py-2 rounded-full bg-primary-main border-2 border-primary-main text-background-alt text-lg font-bold hover:bg-blue-300 hover:border-blue-300 transition-colors duration-200 ease-in-out"
       (click)="handlePost()"
     >
       POST

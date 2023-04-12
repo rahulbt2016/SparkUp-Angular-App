@@ -1,10 +1,10 @@
 <app-navbar></app-navbar>
 <div class="flex justify-between ml-4 mt-4">
   <div class="w-1/4 m-5 ml-20">
-    <app-user-widget [userId]="userId?? ''"></app-user-widget>
+    <app-user-widget [userId]="userId ?? ''"></app-user-widget>
   </div>
   <div class="w-2/4 px-5 m-5">
-    <app-new-post-widget></app-new-post-widget>
+    <app-new-post-widget [userId]="userId ?? ''"></app-new-post-widget>
     <app-posts-widget [userId]="''"></app-posts-widget>
   </div>
   <div class="w-1/4 m-5 mr-20">

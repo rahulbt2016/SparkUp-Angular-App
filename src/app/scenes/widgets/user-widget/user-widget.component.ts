@@ -1,4 +1,10 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { BASE_URL } from 'src/app/api/config';
 
@@ -41,7 +47,7 @@ export class UserWidgetComponent implements OnInit, OnChanges {
     viewedProfile: 0,
     impressions: 0,
     messages: [],
-  }
+  };
 
   constructor(private authService: AuthService) {}
   @Input() userId: string = '';
@@ -49,14 +55,17 @@ export class UserWidgetComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this.authService.getUser(this.userId).subscribe((data) => {
       this.user = data;
+      // console.log(this.user);
     });
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['userId']) {
-      this.authService.getUser(changes['userId'].currentValue).subscribe((data) => {
-        this.user = data;
-      });
+      this.authService
+        .getUser(changes['userId'].currentValue)
+        .subscribe((data) => {
+          this.user = data;
+        });
     }
   }
 
