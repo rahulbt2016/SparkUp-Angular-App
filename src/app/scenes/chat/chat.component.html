@@ -1,1 +1,76 @@
-<p>chat works!</p>
+<app-navbar></app-navbar>
+<div class="bg-gray-100 min-h-screen">
+  <div class="container mx-auto pt-8 flex">
+    <div class="w-1/4 pr-4">
+      <h2 class="text-lg font-bold mb-4">Friend List</h2>
+      <ul class="bg-white rounded-lg shadow-lg">
+        <div *ngIf="friends; else elseBlock">
+          <li *ngFor="let f of friends">
+            <div (click)="handleUserSelect(f)" class="px-4 py-2 cursor-pointer"
+              [class.bg-gray-200]="selectedUser?._id === f._id">
+            
+            {{f.firstName}} {{f.lastName}}</div>
+          </li>
+        </div>
+        <ng-template #elseBlock>No friend to show</ng-template>
+      </ul>
+    </div>
+    <div *ngIf="selectedUser ; else alternateBlock" class="w-3/4 pl-4">
+      <div class="bg-white rounded-lg shadow-lg">
+
+        <div class="py-4 px-8 bg-gray-100">
+          <h1 class="text-2xl font-bold text-gray-800">
+            Chat with {{selectedUser.firstName}}
+          </h1>
+        </div>
+
+        <div class="px-8 py-6 flex-1">
+          <div *ngFor="let message of messageReceive" class="max-h-96 overflow-y-scroll mb-4">
+            <div class="mb-2">
+
+              <div *ngIf="loggedInUser.email===message.sender; else alternate"
+                class="flex items-start flex-row-reverse">
+                <div class="flex-shrink-0"></div>
+                <div class="ml-3">
+                  <p class="text-sm text-gray-600">
+                    {{loggedInUser.firstName}}
+                  </p>
+                  <div class="px-4 py-2 bg-blue-500 text-white rounded-lg shadow">
+                    {{message.text}}
+                  </div>
+                </div>
+              </div>
+              <ng-template #alternate class="flex items-start">
+                <div class="flex items-start">
+                  <div class="flex-shrink-0"></div>
+                  <div class="ml-3">
+                    <p class="text-sm text-gray-600">
+                      {{selectedUser.firstName}}
+                    </p>
+                    <div class="px-4 py-2 bg-blue-500 text-white rounded-lg shadow">
+                      {{message.text}}
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </div>
+          </div>
+
+          <form [formGroup]="messageForm" (ngSubmit)="sendMessage()" >
+            <div class="flex items-center">
+              <input type="text" name="message" class="flex-1 py-2 px-4 border border-gray-300 rounded-lg mr-2"
+                placeholder="Type your message here" formControlName="message" [class.border-red-500]="messageForm.get('message')?.invalid && messageForm.controls.message.touched" autoComplete="off" required />
+              <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg" [disabled]="messageForm.get('message')?.invalid">
+                Send
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <ng-template #alternateBlock class="bg-white rounded-lg shadow-lg px-8 py-4">
+      <div>Select a friend to start chat</div>
+    </ng-template>
+
+  </div>
+</div>

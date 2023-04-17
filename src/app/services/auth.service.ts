@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 import { BASE_URL } from '../api/config';
 
@@ -53,13 +53,25 @@ interface IFriend {
   _id: string;
   firstName: string;
   lastName: string;
+  email:string;
   occupation: string;
   picturePath: string;
+}
+interface MessageReceive {
+  _id: string;
+  messageKey: string;
+  sender: string;
+  receiver: string;
+  text: string;
+  time: string;
+  __v: string;
 }
 
 @Injectable({
   providedIn: 'root',
 })
+
+
 export class AuthService {
   private _isLoggedIn$ = new BehaviorSubject<boolean>(false);
   isLoggedIn$ = this._isLoggedIn$.asObservable();
@@ -83,6 +95,7 @@ export class AuthService {
           this._isLoggedIn$.next(true);
           localStorage.setItem('authToken', response.token);
           localStorage.setItem('userId', response.user._id);
+          localStorage.setItem('userEmail', response.user.email);
         })
       );
   }
@@ -91,6 +104,7 @@ export class AuthService {
     this._isLoggedIn$.next(false);
     localStorage.removeItem('authToken');
     localStorage.removeItem('userId');
+    localStorage.removeItem('userEmail');
   }
 
   mytoken = localStorage.getItem('authToken');
@@ -136,6 +150,28 @@ export class AuthService {
     return this.http.get<IFriend[]>(
       BASE_URL + '/users/' + userId + '/friends/',
       this.httpOptions
+    );
+  }
+
+  fetchChat(userEmail:any, friendEmail:any){
+    const params = new HttpParams()
+    .set('emailSender', userEmail)
+    .set('emailReceiver', friendEmail)
+
+    return this.http.get<MessageReceive[]>(
+      BASE_URL + '/chats/receive?' + params,
+      this.httpOptions
+    );
+  }
+
+  sendChat(userEmail:any, friendEmail:any, message:any){
+    const body = {
+      emailSender: userEmail,
+      emailReceiver: friendEmail,
+      message: message,
+    };
+    return this.http.post(
+      BASE_URL + '/chats/send',body,this.httpOptions
     );
   }
 
