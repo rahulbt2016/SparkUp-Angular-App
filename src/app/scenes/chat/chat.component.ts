@@ -99,7 +99,7 @@ export class ChatComponent implements OnInit {
       this.authService.fetchChat(this.userEmail,this.selectedUser?.email).subscribe((data) => {
         this.messageReceive = data;
       });
-    }, 3000);
+    }, 500);
   }
   // ngOnDestroy(): void {
   //   // Clean up the timer using clearInterval()
