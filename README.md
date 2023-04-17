@@ -10,7 +10,7 @@ Sweta: /login
 
 Sandeep: /getUsers postSchema
 
-Jagtar: Chat
+Jagtar: Chat application including functionality, routes, reactive forums, apis,schemas and etc.
 
 ## Development server
 
