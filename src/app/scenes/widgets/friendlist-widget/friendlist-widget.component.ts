@@ -46,7 +46,19 @@ export class FriendlistWidgetComponent implements OnInit {
   }
 
   patchFriend(id: string) {
-
+    this.authService.patchFriend(localStorage.getItem('userId'), id).subscribe(
+      (response) => {
+        // handle success case
+        console.log(response);
+        // Reload the page after successful post creation
+        location.reload();
+      },
+      (error) => {
+        // handle error case
+        console.log(error);
+      }
+    );
+    
   }
 
 }

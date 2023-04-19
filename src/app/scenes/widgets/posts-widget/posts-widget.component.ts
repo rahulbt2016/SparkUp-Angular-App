@@ -30,7 +30,7 @@ export class PostsWidgetComponent implements OnInit {
 
   ngOnInit(): void {
     this.authService.getPostFeeds().subscribe((data) => {
-      this.postFeeds = data.reverse();
+      this.postFeeds = data;
     });
   }
 }
