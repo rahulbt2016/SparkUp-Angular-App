@@ -1,17 +1,34 @@
-# SparkUp - Angular
+# SparkUp -  Social Media for Millennials
+## Team Members: 
+##### 1) Rahul Tiwari
+##### 2) Sweta Rani Patra
+##### 3) Jayesh Saini
+##### 4) Sandeep Das
+##### 5) Jagtar Singh
 
-This project was made by Reactive Heads.
+Jayesh:
+/register
+/login
+Navbar
+UserWidget
+PostWidget
 
-Jayesh: Navbar UserWidget PostWidget
+Rahul:
+Deployment
+/getUserFriends
+/createPost
+/getFeedPosts
 
-Rahul: /register
+Sweta:
+/getUserPosts
+/likePost
+UserSchema
 
-Sweta: /login
+Sandeep:
+/getUsers
+postSchema
 
-Sandeep: /getUsers postSchema
-
-Jagtar: Chat application functionality, routes, reactive forums, apis,schemas and etc.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Jagtar:
+/chats/receive
+/chats/send
+chatPage
