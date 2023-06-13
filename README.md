@@ -54,4 +54,3 @@
 
 - Backend: [https://sparkup.azurewebsites.net/](https://sparkup.azurewebsites.net/)
 - Angular App: [https://sparkup-angular.vercel.app/](https://sparkup-angular.vercel.app/)
-- Login Credentials: Email -> rahulbt2016@gmail.com, Password-> abc#1234
